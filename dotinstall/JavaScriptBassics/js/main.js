@@ -13,3 +13,9 @@ console.log('it\'s me!');
 console.log('hell\no wor\tld'); // \n:改行 \t:タブ
 
 console.log('hello' + 'world');
+
+console.log(10 + 3);
+console.log(10 * 3);
+console.log(10 / 3);
+console.log(10 % 3);
+console.log(10 ** 3);
