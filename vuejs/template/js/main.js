@@ -5,12 +5,11 @@
     el: '#app',
     data: {
       message: 'HelloWorld!',
-      number: 3,
-      ok: true,
     },
     methods: {
-      sayHi: function() {
-        return 'Hi';
+      sayHi() {
+        this.message = 'Hello VueJS'
+        return 'Hi'
       }
     }
   });
