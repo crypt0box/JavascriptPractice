@@ -14,6 +14,8 @@
     <div>{{ html }}</div>
     <div v-html="html"></div>
     <a v-bind:href="url">Google</a>
+    <a :[attribute]="url">Google</a>
+    <a v-bind="twitterObject">Twitter</a>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
