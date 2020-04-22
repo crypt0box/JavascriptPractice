@@ -11,6 +11,10 @@
     <p>現在{{ number }}回クリックされています</p>
     <button v-on:[event]="countUp">カウントアップ</button>
     <button @[event]="countUp">カウントアップ</button>
+    <p>{{ counter }}</p>
+      <button @click="counter += 1">+1</button>
+      <p>{{ counter > 3 ? '3より上' : '3以下' }}</p>
+      <p>{{ lessThanThree }}</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
