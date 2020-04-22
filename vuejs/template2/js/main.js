@@ -13,9 +13,9 @@
       countUp: function() {
         this.number += 1
       },
-      changeMousePosition: function(event) {
-        this.x = event.clientX;
-        this.y = event.clientY;
+      changeMousePosition: function(event, divideNumber) {
+        this.x = event.clientX / divideNumber;
+        this.y = event.clientY / divideNumber;
       }
     }
   });
