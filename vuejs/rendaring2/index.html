@@ -9,7 +9,12 @@
 <body>
 
   <div id="app">
-    <p v-if="ok">OK!</p>
+    <template v-if="ok">
+      <p>Hello</p>
+      <p>Good Bye</p>
+      <p>おはよう</p>
+    </template>
+    <button @click="ok = !ok">ボタン</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

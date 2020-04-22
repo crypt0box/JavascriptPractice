@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div id="app">
+    <ul>
+      <li v-for="fruit in fruits">{{ fruit }}</li>
+      <li v-for="(fruit, index) in fruits">({{ index }}){{ fruit }}</li>
+    </ul>
+    <ul>
+      <li v-for="value in object">{{ value }}</li>
+      <li v-for="(value, key, index) in object">({{ index }}){{ key }}--{{ value }}</li>
+    </ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
