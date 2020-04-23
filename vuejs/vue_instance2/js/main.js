@@ -1,18 +1,17 @@
-var vm1 = new Vue({
-  el: '#app1',
-  data: {
-    message: 'インスタンス1'
-  }
-});
+var data = {
+  message: 'こんにちは',
+  name: 'よしぴー',
+}
 
-var vm2 = new Vue({
-  el: '#app2',
-  data: {
-    message: 'インスタンス2'
-  },
-  methods: {
-    changeMessage1: function() {
-      vm1.message = 'インスタンス2から変えました'
+var vm = new Vue({
+  el: '#app',
+  data: data,
+  computed: {
+    myData: function() {
+      return this.$data;
     }
   }
 });
+
+console.log(data === vm.$data)
+console.log(vm)
