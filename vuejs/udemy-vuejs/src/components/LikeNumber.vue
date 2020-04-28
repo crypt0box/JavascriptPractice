@@ -11,6 +11,9 @@ export default {
     totalNumber: {
       type: Number,
       default: 10,
+    },
+    testProps: {
+      type: String
     }
   },
   computed: {
