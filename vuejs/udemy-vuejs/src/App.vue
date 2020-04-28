@@ -10,26 +10,35 @@
     </LikeHeader>
     <LikeNumber :total-number="number" v-on:my-click="number = $event"></LikeNumber>
     <LikeNumber :total-number="number" test-props="test"></LikeNumber>
+    <button @click="currentComponent = 'Home'">Home</button>
+    <button @click="currentComponent = 'About'">About</button>
+    <About v-if="currentComponent === 'About'"></About>
+    <Home v-if="currentComponent === 'Home'"></Home>
   </div>
 </template>
 
 <script>
 import LikeHeader from "./components/LikeHeader";
+import About from "./components/About";
+import Home from "./components/Home";
 
 export default {
   data() {
     return {
-      number: 10
+      number: 10,
+      currentComponent: "Home"
     };
   },
   components: {
-    LikeHeader
+    LikeHeader,
+    About,
+    Home,
   }
 };
 </script>
 
 <style scoped>
-  div {
-    border: 1px solid blue;
-  }
+div {
+  border: 1px solid blue;
+}
 </style>
