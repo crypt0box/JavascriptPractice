@@ -17,9 +17,10 @@
     </keep-alive>
     <div>
       <h2>イベントのフォーム</h2>
-      <label for="title">タイトル</label>
-      <input id="title" type="text" v-model="eventData.title">
-      <p>{{ eventData.title }}</p>
+      <EventTitle
+        :value="eventData.title"
+        @input="eventData.title = $event"
+      ></EventTitle>
       <p>開催場所</p>
       <select v-model="eventData.location">
         <option v-for="location in locations" :key="location">{{ location }}</option>
@@ -33,6 +34,7 @@
 import LikeHeader from "./components/LikeHeader";
 import About from "./components/About";
 import Home from "./components/Home";
+import EventTitle from "./components/EventTitle";
 
 export default {
   data() {
@@ -50,6 +52,7 @@ export default {
     LikeHeader,
     About,
     Home,
+    EventTitle,
   }
 };
 </script>
