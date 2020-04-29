@@ -20,6 +20,11 @@
       <label for="title">タイトル</label>
       <input id="title" type="text" v-model="eventData.title">
       <p>{{ eventData.title }}</p>
+      <p>開催場所</p>
+      <select v-model="eventData.location">
+        <option v-for="location in locations" :key="location">{{ location }}</option>
+      </select>
+      <p>{{ eventData.location }}</p>
     </div>
   </div>
 </template>
@@ -34,8 +39,10 @@ export default {
     return {
       number: 10,
       currentComponent: "Home",
+      locations: ["東京", "大阪", "名古屋"],
       eventData: {
-        title: "タイトル"
+        title: "タイトル",
+        location: "東京",
       }
     };
   },
