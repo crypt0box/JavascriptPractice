@@ -27,6 +27,15 @@
       </select>
       <p>{{ eventData.location }}</p>
     </div>
+    <div class="main">
+      <button @click="show = !show">切り替え</button>
+      <transition name="fade">
+        <p v-if="show">hello</p>
+      </transition>
+      <transition name="slide" type="animation">
+        <p v-if="show">bye</p>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -42,6 +51,7 @@ export default {
       number: 10,
       currentComponent: "Home",
       locations: ["東京", "大阪", "名古屋"],
+      show: true,
       eventData: {
         title: "タイトル",
         location: "東京",
@@ -56,3 +66,59 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.fade-enter {
+  /* 現れる時の最初の状態 */
+  opacity: 0;
+}
+.fade-enter-active {
+  /* 現れる時のトランジションの状態 */
+  transition: opacity .5s;
+}
+.fade-enter-to {
+  /* 現れる時の最後の状態 */
+  opacity: 1;
+}
+.fade-leave {
+  /* 消える時の最初の状態 */
+  opacity: 1;
+}
+.fade-leave-active {
+  /* 消える時のトランジションの状態 */
+  transition: opacity .5s;
+}
+.fade-leave-to {
+  /* 消える時の最後の状態 */
+  opacity: 0;
+}
+
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
+}
+.slide-enter-active {
+  animation: slide-in 0.5s;
+  transition: opacity 0.5s;
+}
+.slide-leave-active {
+  animation: slide-in 0.5s reverse;
+  transition: opacity 0.5s;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.main {
+  width: 70%;
+  margin: auto;
+  padding-top: 5rem;
+  text-align: center;
+}
+</style>
