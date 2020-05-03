@@ -28,11 +28,19 @@
       <p>{{ eventData.location }}</p>
     </div>
     <div class="main">
+      <button @click="myAnimation = 'slide'">Slide</button>
+      <button @click="myAnimation = 'fade'">Fade</button>
+      <p>{{ myAnimation }}</p>
       <button @click="show = !show">切り替え</button>
-      <transition name="fade">
+      <transition
+        enter-active-class="animated bounce"
+        leave-active-class="animated shake"
+      >
         <p v-if="show">hello</p>
       </transition>
-      <transition name="slide" type="animation">
+      <transition
+        :name="myAnimation"
+      >
         <p v-if="show">bye</p>
       </transition>
     </div>
@@ -52,6 +60,7 @@ export default {
       currentComponent: "Home",
       locations: ["東京", "大阪", "名古屋"],
       show: true,
+      myAnimation: "slide",
       eventData: {
         title: "タイトル",
         location: "東京",
