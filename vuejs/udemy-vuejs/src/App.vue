@@ -204,6 +204,8 @@ export default {
 .fade-leave-active {
   /* 消える時のトランジションの状態 */
   transition: opacity .5s;
+  position: absolute;
+  width: 200px;
 }
 .fade-leave-to {
   /* 消える時の最後の状態 */
