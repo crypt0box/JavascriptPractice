@@ -32,6 +32,29 @@
       <button @click="myAnimation = 'fade'">Fade</button>
       <p>{{ myAnimation }}</p>
       <button @click="show = !show">切り替え</button>
+      <br><br>
+      <transition
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter"
+        @enter-cancelled="enterCancelled"
+
+        @before-leave="beforeLeave"
+        @leave="leave"
+        @after-leave="afterLeave"
+        @leave-cancelled="leaveCancelled"
+      >
+        <div
+          class="circle"
+          v-if="show"
+        ></div>
+      </transition>
+      <br>
+      <button @click="myComponent = 'ComponentA'">ComponentA</button>
+      <button @click="myComponent = 'ComponentB'">ComponentB</button>
+      <transition name="fade" mode="out-in">
+        <component :is="myComponent"></component>
+      </transition>
       <transition
         enter-active-class="animated bounce"
         leave-active-class="animated shake"
@@ -52,6 +75,8 @@ import LikeHeader from "./components/LikeHeader";
 import About from "./components/About";
 import Home from "./components/Home";
 import EventTitle from "./components/EventTitle";
+import ComponentA from "./components/ComponentA";
+import ComponentB from "./components/ComponentB";
 
 export default {
   data() {
@@ -61,6 +86,7 @@ export default {
       locations: ["東京", "大阪", "名古屋"],
       show: true,
       myAnimation: "slide",
+      myComponent: "ComponentA",
       eventData: {
         title: "タイトル",
         location: "東京",
@@ -72,11 +98,47 @@ export default {
     About,
     Home,
     EventTitle,
+    ComponentA,
+    ComponentB,
+  },
+  methods: {
+    beforeEnter() {
+      // 現れる前
+    },
+    enter() {
+      // 現れるとき
+    },
+    afterEnter() {
+      // 現れた後
+    },
+    enterCancelled() {
+      // 現れるアニメーションがキャンセルされたとき
+    },
+    beforeLeave() {
+      // 消える前
+    },
+    leave() {
+      // 消えるとき
+    },
+    afterleave() {
+      // 消えた後
+    },
+    leaveCancelled() {
+      // 消えるアニメーションがキャンセルされたとき
+    },
   }
 };
 </script>
 
 <style scoped>
+.circle {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  border-radius: 100px;
+  background-color: deeppink;
+}
+
 .fade-enter {
   /* 現れる時の最初の状態 */
   opacity: 0;
