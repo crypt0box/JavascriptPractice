@@ -102,28 +102,28 @@ export default {
     ComponentB,
   },
   methods: {
-    beforeEnter() {
+    beforeEnter(el) {
       // 現れる前
     },
-    enter() {
+    enter(el, done) {
       // 現れるとき
     },
-    afterEnter() {
+    afterEnter(el) {
       // 現れた後
     },
-    enterCancelled() {
+    enterCancelled(el) {
       // 現れるアニメーションがキャンセルされたとき
     },
-    beforeLeave() {
+    beforeLeave(el) {
       // 消える前
     },
-    leave() {
+    leave(el, done) {
       // 消えるとき
     },
-    afterleave() {
+    afterleave(el) {
       // 消えた後
     },
-    leaveCancelled() {
+    leaveCancelled(el) {
       // 消えるアニメーションがキャンセルされたとき
     },
   }
