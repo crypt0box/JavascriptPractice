@@ -4,6 +4,7 @@
       <router-link to="/" active-class="link--active" exact class="link">Home</router-link>
       <router-link to="/users" active-class="link--active" exact class="link">Users</router-link>
     </nav>
+    <router-view name="header"></router-view>
     <router-view></router-view>
   </div>
 </template>
