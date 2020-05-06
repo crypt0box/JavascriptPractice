@@ -2,7 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from "./router"
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+// router.beforeEach((to, from, next) => {
+//   next();
+// })
 
 new Vue({
   router: router,
