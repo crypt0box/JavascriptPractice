@@ -30,17 +30,19 @@ export default {
   },
   methods: {
     createComment() {
-      axios.post('https://firestore.googleapis.com/v1/projects/http-vuejs-f7659/databases/(default)/documents/comments',
-      {
-        fields: {
-          name: {
-            stringValue: this.name
-          },
-          comment: {
-            stringValue: this.comment
+      axios
+        .post('https://firestore.googleapis.com/v1/projects/http-vuejs-f7659/databases/(default)/documents/comments',
+          {
+            fields: {
+              name: {
+                stringValue: this.name
+              },
+              comment: {
+                stringValue: this.comment
+              }
+            }
           }
-        }
-      });
+        )
     }
   }
 };
