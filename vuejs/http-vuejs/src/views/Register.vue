@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     register() {
-      axios.post('/accounts:signUp?key=AIzaSyBERpr6l9lkzqpWMdbjc8fev9wP2QuY2fQ',
+      axios.post('/accounts:signUp?key=',
       {
         email: this.email,
         password: this.password,
