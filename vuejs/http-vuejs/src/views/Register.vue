@@ -29,7 +29,9 @@ export default {
         password: this.password,
         returnSecureToken: true,
       }
-      )
+      );
+      this.email = "";
+      this.password = "";
     }
   }
 };
