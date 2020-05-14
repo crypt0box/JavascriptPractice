@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from '../axios-auth';
-import router from "../router"
+import router from "../router";
+import axiosRefresh from "../axios-refresh";
 
 Vue.use(Vuex);
 
@@ -18,7 +19,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    login({ commit }, authData) {
+    login({ commit, dispatch }, authData) {
       axios.post('/accounts:signInWithPassword?key=',
         {
           email: authData.email,
@@ -28,8 +29,25 @@ export default new Vuex.Store({
       )
       .then(response => {
         commit("updateIdToken", response.data.idToken);
+        setTimeout(() => {
+          dispatch('refreshIdToken', response.data.refreshToken);
+        }, response.data.expiresIn * 10000);
         router.push("/")
       })
+    },
+    refresIdToken({ commit, dispatch }, refreshToken) {
+      axiosRefresh.post(
+        "token?key=[API_KEY]",
+        {
+          grant_type: 'refresh_token',
+          refresh_token: refreshToken,
+        }
+      ).then(response => {
+        commit("updateIdToken", response.data.id_token);
+        setTimeout(() => {
+          dispatch('refreshIdToken', response.data.refresh_token);
+        }, response.data.expires_in * 10000);
+      });
     },
     register({ commit }, authData) {
       axios.post('/accounts:signUp?key=',
