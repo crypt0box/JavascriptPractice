@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    idToken: nukk
+    idToken: null
   },
   mutations: {
     updateIdToken(state, idToken) {
@@ -17,11 +17,26 @@ export default new Vuex.Store({
     login({ commit }, authData) {
       axios.post('/accounts:signInWithPassword?key=',
         {
-          email: this.email,
-          password: this.password,
+          email: authData.email,
+          password: authData.password,
           returnSecureToken: true,
         }
-      );
+      )
+      .then(response => {
+        commit("updateIdToken", response.data.idToken);
+      })
+    },
+    register({ commit }, authData) {
+      axios.post('/accounts:signUp?key=',
+        {
+          email: authData.email,
+          password: authData.password,
+          returnSecureToken: true,
+        }
+      )
+      .then(response => {
+        commit("updateIdToken", response.data.idToken);
+      })
     }
-  }
-})
+}
+});
