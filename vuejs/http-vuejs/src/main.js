@@ -8,8 +8,10 @@ Vue.config.productionTip = false
 
 axios.defaults.baseURL = "https://firestore.googleapis.com/v1/projects/http-vuejs-f7659/databases/(default)/documents";
 
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app')
+store.dispatch('autoLogin').then(() => {
+  new Vue({
+    router,
+    store,
+    render: h => h(App),
+  }).$mount('#app')
+});
