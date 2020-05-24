@@ -8,16 +8,23 @@
     data: {
       name: 'taguchi',
       newItem: '',
-      todos: [{
-        title: 'task 1',
-        isDone: false
-      }, {
-        title: 'task 2',
-        isDone: false
-      }, {
-        title: 'task 3',
-        isDone: true
-      }]
+      todos: []
+    },
+    watch: {
+      // todos() {
+      //   localStorage.setItem('todos', JSON.stringify(this.todos));
+      //   alert('Data saved!');
+      // }
+      todos: {
+        handler() {
+          localStorage.setItem('todos', JSON.stringify(this.todos));
+          // alert('Data saved!');
+        },
+        deep: true
+      }
+    },
+    mounted() {
+      this.todos = JSON.parse(localStorage.getItem('todos')) || [];
     },
     methods: {
       addItem() {
@@ -32,14 +39,26 @@
         if (confirm('are you sure?')) {
           this.todos.splice(index, 1)
         }
+      },
+      purge() {
+        if (!confirm('delete finished?')) {
+          return;
+        }
+        // this.todos = this.todos.filter(function(todo) {
+        //   return !todo.isDone;
+        // })
+        this.todos = this.remaining;
       }
     },
     computed: {
       remaining() {
-        var items = this.todos.filter(function(todo) {
-          return !todo.isDone;
-        });
-        return items.length;
+        // var items = this.todos.filter(function(todo) {
+        //   return !todo.isDone;
+        // });
+        // return items.length;
+        return this.todos.filter(function (todo) {
+          return !todo.isDone
+        })
       }
     }
   });
