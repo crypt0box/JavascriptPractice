@@ -7,10 +7,28 @@
 </head>
 <body>
 
-  <div id="app">
+  <div id="app" class="container">
     <!-- <p>Hello {{ name }}!</p> -->
     <p>Hello {{ name.toUpperCase() }}!</p>
     <p><input type="text" v-model="name"></p>
+    <h1>
+      My Todos
+      <span class="info">({{ remaining }}/{{ todos.length }})</span>
+    </h1>
+    <ul v-if="todos.length">
+      <li v-for="(todo, index) in todos">
+        <input type="checkbox" v-model="todo.isDone">
+        <span :class="{done: todo.isDone}">{{ todo.title }}</span>
+        <span @click="deleteItem(index)" class="command">[x]</span>
+      </li>
+    </ul>
+    <ul v-else>
+      <li>Nothing to do, yay!</li>
+    </ul>
+    <form @submit.prevent="addItem">
+      <input type="text" v-model="newItem">
+      <input type="submit" value="Add">
+    </form>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
